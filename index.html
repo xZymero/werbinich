@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wer bin ich?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Wer bin ich?</h1>
+
+    <!-- Startmenü -->
+    <div id="main-menu">
+      <button onclick="createLobby()">Spiel erstellen</button>
+      <button onclick="showJoinMenu()">Spiel beitreten</button>
+    </div>
+
+    <!-- Namens- und Farbauswahl -->
+    <div id="name-color-menu" class="hidden">
+      <input type="text" id="player-name" placeholder="Dein Name" />
+      <input type="color" id="player-color" />
+      <button onclick="joinLobby()">Beitreten</button>
+    </div>
+
+    <!-- Lobby -->
+    <div id="lobby" class="hidden">
+      <h2>Lobby-Code: <span id="lobby-code-display"></span></h2>
+      <div id="player-list"></div>
+      <button id="start-btn" class="hidden" onclick="startGame()">Spiel starten</button>
+    </div>
+
+    <!-- Zuweisung -->
+    <div id="assignment-screen" class="hidden">
+      <h2>Du denkst dir eine Figur aus für: <span id="assigned-player-name"></span></h2>
+      <input type="text" id="character-input" placeholder="Welche Figur soll erraten werden?" />
+      <button onclick="submitCharacter()">Fertig</button>
+    </div>
+
+    <!-- Raten -->
+    <div id="guessing-screen" class="hidden">
+      <h2>Rate die dir zugewiesene Figur!</h2>
+      <div id="characters-to-guess"></div>
+      <button onclick="submitGuess()">Ich weiß es!</button>
+      <button onclick="giveUp()">Aufgeben</button>
+    </div>
+
+    <!-- Host-Bestätigung -->
+    <div id="host-approval-screen" class="hidden">
+      <h3><span id="guesser-name"></span> glaubt, seine Figur zu kennen.</h3>
+      <p>Antwort: <strong><span id="guessed-character"></span></strong></p>
+      <button onclick="approveGuess(true)">Stimmt</button>
+      <button onclick="approveGuess(false)">Stimmt nicht</button>
+    </div>
+
+    <!-- Ergebnisse -->
+    <div id="results-screen" class="hidden">
+      <h2>Ergebnisse</h2>
+      <ol id="ranking-list"></ol>
+      <button onclick="resetGame()">Zurück zur Lobby</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
